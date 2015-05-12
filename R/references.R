@@ -1,6 +1,3 @@
-libfary(kfigr)
-library(tools)
-
 #' Print a section label.
 #'
 #' @param label the section label
