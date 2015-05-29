@@ -97,7 +97,7 @@ figr.ref <- function(labels, types, group=TRUE, first.char.upper=T) {
         paste(groups, collapse="; ")
     }
     else {
-        refs <- sapply(1:length(labels), function(i) .format.refs(labels[i], types[i])
+        refs <- sapply(1:length(labels), function(i) .format.refs(labels[i], types[i]))
         paste(paste(refs[-length(refs)], collapse=", "), refs[length(refs)], sep=" and ")
     }    
 }
