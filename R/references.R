@@ -72,32 +72,49 @@ knit_hooks$set(pgbreak=function(before, options, envir) {
 #' 2. Ability to format a list of references
 #'
 #' @param labels character vector of labels to reference.
+#' @param panels character vector of figure panels to reference; must either 
+#' be of the same length as `labels` or NULL.
 #' @param types character vector of label types; must either be of length 1
 #' (meaning all labels are of the same type), or of the same length as `labels`.
 #' @param group logical; if true, labels of the same type will be grouped together.
-figr.ref <- function(labels, types, group=TRUE, first.char.upper=T) {
+figr.ref <- function(labels, panels=NULL, types="figure", group=TRUE, first.char.upper=T) {
     stopifnot(length(types) %in% c(1, length(labels)))
-    .format.refs <- function(labels, type) {
-        refs <- sapply(labels, figr, prefix=F, link=T, type=type)
+    if (is.null(panels)) {
+        panels <- rep(NA, length(labels))
+    }
+    else {
+        stopifnot(length(panels) == length(labels))
+    }
+    .format.refs <- function(labels, panels, type) {
+        refs <- sapply(1:length(labels), function(i) {
+            ref = figr(labels[i], prefix=F, link=T, type=type)
+            panel <- panels[i]
+            ifelse(is.na(panel), ref, paste(ref, panel))
+        })
         prefix <- type
         if (first.char.upper) {
             prefix <- paste0(toupper(substr(prefix,1,1)), substring(type,2))
         }
         if (length(refs) > 1) {
             prefix <- paste0(prefix, "s")
-            refs <- paste(paste(refs[-length(refs)], collapse=", "), refs[length(refs)], sep=" and ")
+            refs <- paste(paste(refs[-length(refs)], collapse=", "), 
+                          refs[length(refs)], sep=" and ")
         }
         paste(prefix, refs)
     }
     if (length(types) == 1) {
-        .format.refs(labels, types[1])
+        .format.refs(labels, panels, types[1])
     }
-    else if (group) {
-        groups <- tapply(labels, types, .format.refs)
+    if (group) {
+        groups <- sapply(unique(types), function(type) {
+            w <- types == type
+            .format.refs(labels[w], panels[w], type)
+        })
         paste(groups, collapse="; ")
     }
     else {
-        refs <- sapply(1:length(labels), function(i) .format.refs(labels[i], types[i]))
+        refs <- sapply(1:length(labels), function(i) 
+            .format.refs(labels[i], panels[i], types[i]))
         paste(paste(refs[-length(refs)], collapse=", "), refs[length(refs)], sep=" and ")
-    }    
+    }
 }

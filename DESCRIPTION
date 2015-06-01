@@ -8,5 +8,5 @@ Description: This package provides functions to handle common tasks
 	from within the text.
 Depends: R (>= 3.1.0), knitr
 License: GPL (>= 2)
-Imports: knitr, kfigr
+Depends: knitr, kfigr
 LazyData: true
