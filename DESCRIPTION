@@ -6,7 +6,6 @@ Description: This package provides functions to handle common tasks
 	performed when writing knitr documents, such as formatting
 	numbers and percentages, and referencing figures and tables
 	from within the text.
-Depends: R (>= 3.1.0), knitr
+Depends: R (>= 3.1.0), knitr, kfigr
 License: GPL (>= 2)
-Depends: knitr, kfigr
 LazyData: true
