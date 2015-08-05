@@ -1,0 +1,4 @@
+name: Report (PDF)
+description: >
+    Template for creating a report with figures, tables, toc, and references.
+create_dir: false

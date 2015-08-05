@@ -74,6 +74,10 @@ format.affilation.refs <- function(labels, affil.sep=',', affil.wrap=NULL) {
     affil.str
 }
 
+# Wrap function for an affiliation list to make it superscript
+# in either HTML or Markdown.
+markup.ss <- function(s) paste0("<sup>", s, "</sup>")
+
 #' Format author and affiliation lists from two linked tables.
 #' 
 #' The author table must have the following columns: First, Middle, Last, Suffix,
