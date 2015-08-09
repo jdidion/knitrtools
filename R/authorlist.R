@@ -15,7 +15,7 @@ format.full.name <- function(fields, suffix.sep=' ', initial.sep='') {
         author.str <- paste(author.str, middle)
     }
     author.str <- paste(author.str, fields$Last)
-    if (!is.na(fields$Suffix))
+    if (!is.na(fields$Suffix)) {
         author.str <- paste(paste0(author.str, suffix.sep), fields$Suffix)
     }
     author.str
