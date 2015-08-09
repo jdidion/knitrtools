@@ -66,7 +66,7 @@ format.affiliation <- function(label, fields, label.sep=". ", part.sep=", ") {
 #' Format a list of affiliation references.
 #' @param affil.sep separator between multiple affiliations after an author name
 #' @param affil.wrap function to wrap the list of an author's affiliations
-format.affilation.refs <- function(labels, affil.sep=',', affil.wrap=NULL) {
+format.affiliation.refs <- function(labels, affil.sep=',', affil.wrap=NULL) {
     affil.str <- paste(labels, collapse=affil.sep)
     if (!is.null(affil.wrap)) {
         affil.str <- affil.wrap(affil.str)
