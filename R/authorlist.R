@@ -31,7 +31,7 @@ format.initial.first <- function(fields, suffix.sep=' ', initial.sep='') {
         init.str <- paste0(init.str, middle)
     }
     author.str <- paste(init.str, fields$Last)
-    if (!is.na(fields$Suffix))
+    if (!is.na(fields$Suffix)) {
         author.str <- paste(paste0(author.str, suffix.sep), fields$Suffix)
     }
     author.str
@@ -49,7 +49,7 @@ format.initial.last <- function(fields, suffix.sep=' ', initial.sep='', first.la
         init.str <- paste0(init.str, middle)
     }
     author.str <- authors$Last
-    if (!is.na(fields$Suffix))
+    if (!is.na(fields$Suffix)) {
         author.str <- paste(paste0(author.str, suffix.sep), fields$Suffix)
     }
     author.str <- paste0(author.str, first.last.sep, init.str)
