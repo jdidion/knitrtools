@@ -9,7 +9,7 @@ format.initial <- function(x, initial.sep='') {
 #' @param suffix.sep string separating the suffixe (e.g. Jr.) from the last name
 #' @param initial.sep string separating consecutive initials
 format.full.name <- function(fields, suffix.sep=' ', initial.sep='') {
-    author.str <- authors$First
+    author.str <- fields$First
     if (!is.na(fields$Middle)) {
         middle <- format.initial(fields$Middle, initial.sep)
         author.str <- paste(author.str, middle)
@@ -48,7 +48,7 @@ format.initial.last <- function(fields, suffix.sep=' ', initial.sep='', first.la
         middle <- format.initial(fields$Middle, initial.sep)
         init.str <- paste0(init.str, middle)
     }
-    author.str <- authors$Last
+    author.str <- fields$Last
     if (!is.na(fields$Suffix)) {
         author.str <- paste(paste0(author.str, suffix.sep), fields$Suffix)
     }
