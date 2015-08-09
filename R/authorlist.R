@@ -60,7 +60,7 @@ format.initial.last <- function(fields, suffix.sep=' ', initial.sep='', first.la
 #' @param label.sep separator between afiliation label and string
 format.affiliation <- function(label, fields, label.sep=". ", part.sep=", ") {
     fields <- fields[!is.na(fields)]
-    paste(label, paste(fields, collapse=part.sep), sep=affil.label.sep))
+    paste(label, paste(fields, collapse=part.sep), sep=affil.label.sep)
 }
 
 #' Format a list of affiliation references.
