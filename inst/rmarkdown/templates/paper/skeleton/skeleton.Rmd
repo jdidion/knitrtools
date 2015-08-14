@@ -1,12 +1,11 @@
 ---
-title: "miRNA Project"
+title: "My important paper"
 author: "John Didion"
 date: "July 2, 2015"
 graphics: yes
 output: 
     pdf_document:
         fig_caption: true
-toc: true
 ---
 ```{r setup, include=FALSE, cache=FALSE}
 # Load libraries
@@ -20,6 +19,18 @@ knitr::opts_knit$set(root.dir=".") # Change root dir here
 
 # Define other defaults
 #pander::panderOptions('table.split.table', Inf)
+```
+
+```{r}
+# Set path to Excel workbook with author information to use
+# with `format.authors`
+# TODO: could also define a custom format to do this with authors from the preamble
+author.wb <- NULL
+if (!is.null(author.wb)) {
+    authors <- format.authors(author.wb, affil.refs.format.args=list(affil.wrap=markup.ss))
+    print(authors$author.str)
+    print(authors$affil.str)
+}
 ```
 
 # Abstract

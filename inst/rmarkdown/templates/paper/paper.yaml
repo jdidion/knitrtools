@@ -1,0 +1,4 @@
+name: Paper (PDF)
+description: >
+    Template for creating a publication with authors, figures, tables, and references.
+create_dir: false
