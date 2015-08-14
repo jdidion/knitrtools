@@ -1,0 +1,60 @@
+---
+title: "My protocol"
+author: "John Didion"
+date: "July 2, 2015"
+graphics: yes
+output: 
+    pdf_document:
+        fig_caption: true
+---
+```{r setup, include=FALSE, cache=FALSE}
+# Load libraries
+library(knitrtools)
+
+# Define Knitr defaults
+knitr::opts_chunk$set(echo=FALSE, cache=TRUE, warning=FALSE, message=FALSE,
+                      dpi=150, fig.width=7.5, fig.height=6.5, fig.align='center', 
+                      dev='pdf')
+knitr::opts_knit$set(root.dir=".") # Change root dir here
+
+# Define other defaults
+pander::panderOptions('table.split.table', Inf)
+```
+
+# Overview
+
+
+# Materials
+
+```{r}
+pander::pander(readxl::read_excel("materials.xlsx"))
+```
+
+# Reagents
+
+```{r}
+# Could also load solutions from
+# an R data file
+# load.solutions("solutions.RData")
+solution("Lysis buffer 1",
+	"10 mmol Tris",
+	"10 mmol NaCl",
+	"0.2 % Igepal",
+	"1 unit protease inhibitor"
+)
+```
+
+`r reagents(
+	"2 L of Lysis buffer 1",
+	"..."
+)`
+
+# Day 1
+
+`r multiday.protocol(
+	"Day 1" = protocol(
+		"Centrifuge cells for [1 min]",
+		"Resuspend cells in 20 mL of EGS {WARN EGS is toxic}"
+	),
+	...
+)`
