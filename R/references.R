@@ -67,6 +67,12 @@ knit_hooks$set(pgbreak=function(before, options, envir) {
 
 ## Extensions to kfigr
 
+#' Convenience function to get table references. Simply calls 
+#' `figr.ref(labels, types="table", ...)
+tabl.ref <- function(labels, ...) {
+    figr.ref(labels, types="table", ...)
+}
+
 #' Wrap figr with two improvements:
 #' 1. Prefixes printed with first character upper case (optionally)
 #' 2. Ability to format a list of references
