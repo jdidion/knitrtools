@@ -33,6 +33,18 @@ if (!is.null(author.wb)) {
 }
 ```
 
+```{r set_parameters, echo=FALSE}
+parameters = read_delim(
+
+' Parameter			| Value		| Units
+#-------------------|-----------|--------
+ x					| 1         | mm
+',
+
+delim='|', trim_ws=TRUE, comment='#')
+```
+
+
 # Abstract
 
 
@@ -51,3 +63,8 @@ if (!is.null(author.wb)) {
 
 # References
 
+```{r}
+# For debugging: move this around to figure out
+# where script is breaking
+knitr::knit_exit()
+```

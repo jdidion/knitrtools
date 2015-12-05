@@ -22,6 +22,18 @@ knitr::opts_knit$set(root.dir=".") # Change root dir here
 #pander::panderOptions('table.split.table', Inf)
 ```
 
+```{r set_parameters, echo=FALSE}
+parameters = read_delim(
+
+' Parameter			| Value		| Units
+#-------------------|-----------|--------
+ x					| 1         | mm
+',
+
+delim='|', trim_ws=TRUE, comment='#')
+```
+
+
 # Abstract
 
 
@@ -40,3 +52,9 @@ knitr::opts_knit$set(root.dir=".") # Change root dir here
 
 # References
 
+
+```{r}
+# For debugging: move this around to figure out
+# where script is breaking
+knitr::knit_exit()
+```
