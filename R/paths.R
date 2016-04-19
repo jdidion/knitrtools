@@ -3,7 +3,9 @@
 rootDir = getwd()
 
 set_root <- function(dir) {
-    rootDir <<- dir
+    unlockBinding("rootDir", cur.env())
+    assign("rootDir", dir, envir = cur.env())
+    lockBinding("rootDir", cur.env())
 }
 
 # Resolve a path relative to the current rootDir
