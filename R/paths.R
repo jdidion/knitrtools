@@ -1,9 +1,7 @@
 # Deal with paths in knitr documents without having to setwd()
 
-root <- list(dir=getwd())
-
 set_root <- function(dir) {
-    root$dir <<- dir
+    assign("root", dir, envir=globalenv())
 }
 
 # Resolve a path relative to the current rootDir
