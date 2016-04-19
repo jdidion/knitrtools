@@ -1,11 +1,12 @@
 # Deal with paths in knitr documents without having to setwd()
 
-rootDir = getwd()
+assign("rootDir", getwd(), envir = globalenv())
 
 set_root <- function(dir) {
-    unlockBinding("rootDir", cur.env())
-    assign("rootDir", dir, envir = cur.env())
-    lockBinding("rootDir", cur.env())
+    e <- globalenv()
+    unlockBinding("rootDir", e)
+    assign("rootDir", dir, envir = e)
+    lockBinding("rootDir", e)
 }
 
 # Resolve a path relative to the current rootDir
