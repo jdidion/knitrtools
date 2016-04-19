@@ -3,7 +3,7 @@
 rootDir = getwd()
 
 set_root <- function(dir) {
-    rootDir = dir
+    rootDir <<- dir
 }
 
 # Resolve a path relative to the current rootDir
