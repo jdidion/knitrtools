@@ -11,7 +11,7 @@ path <- function(...) {
 
 # Load an R data file and return a list containing
 # the contents
-load_data <- function(..., obj.names=NULL, return.list=FALSE) {
+load_data <- function(..., return.list=FALSE, obj.names=NULL) {
     e <- new.env()
     if (is.null(obj.names)) {
         obj.names <- load(path(...), envir=e)
