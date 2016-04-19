@@ -5,7 +5,7 @@ set_root <- function(dir) {
 }
 
 # Resolve a path relative to the current rootDir
-path <- function(...) {
+rel_path <- function(...) {
     file.path(get("_root_", envir=globalenv()), ...)
 }
 
@@ -14,7 +14,7 @@ path <- function(...) {
 load_data <- function(..., return.list=FALSE, obj.names=NULL) {
     e <- new.env()
     if (is.null(obj.names)) {
-        obj.names <- load(path(...), envir=e)
+        obj.names <- load(rel_path(...), envir=e)
     }
     else {
         load(f, envir=e)
@@ -29,5 +29,5 @@ load_data <- function(..., return.list=FALSE, obj.names=NULL) {
 
 # Load an R file as a module
 import_module <- function(...) {
-    modules::import(path(...))
+    modules::import(rel_path(...))
 }
