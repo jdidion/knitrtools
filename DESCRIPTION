@@ -7,6 +7,6 @@ Description: This package provides functions to handle common tasks
 	numbers and percentages, and referencing figures and tables
 	from within the text.
 Depends: R (>= 3.1.0), knitr, kfigr
-Imports: readxl, data.table, labmath
+Imports: readxl, data.table
 License: GPL (>= 2)
 LazyData: true
