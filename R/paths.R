@@ -13,7 +13,7 @@ path <- function(...) {
 
 # Load an R data file and return a list containing
 # the contents
-load <- function(..., obj.names=NULL, return.list=FALSE) {
+load_data <- function(..., obj.names=NULL, return.list=FALSE) {
     e <- baseenv()
     if (is.null(obj.names)) {
         obj.names <- load(path(...), envir=e)
@@ -30,6 +30,6 @@ load <- function(..., obj.names=NULL, return.list=FALSE) {
 }
 
 # Load an R file as a module
-import <- function(...) {
+import_module <- function(...) {
     modules::import(path(...))
 }
