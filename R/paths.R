@@ -27,8 +27,8 @@ load_data <- function(..., return.list=FALSE, obj.names=NULL) {
     }
 }
 
-load_table <- function(filename, sep="\t", header=TRUE, stringsAsFactors=FALSE, ...) {
-    read.table(rel_path(filename), ...)
+load_table <- function(filename, sep="\t", header=TRUE, ...) {
+    read.table(rel_path(filename), sep=sep, header=header, stringsAsFactors=FALSE, ...)
 }
 
 # Load an R file as a module
