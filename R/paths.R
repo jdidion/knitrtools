@@ -27,6 +27,10 @@ load_data <- function(..., return.list=FALSE, obj.names=NULL) {
     }
 }
 
+load_table <- function(filename, ...) {
+    read.table(rel_path(filename), ...)
+}
+
 # Load an R file as a module
 import_module <- function(...) {
     modules::import(rel_path(...))
