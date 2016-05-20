@@ -58,12 +58,26 @@ knit_hooks$set(echo.label=function(before, options, envir) {
     }
 })
 
-# Add a hook fo place a page break after the chunk
+# Add a hook to place a page break after the chunk
 knit_hooks$set(pgbreak=function(before, options, envir) {
     if (!before) {
         pganchor();
     }
 })
+
+# Set table captions via a chunk parameter (tab.cap).
+# TODO: this doesn't work
+#knit_hooks$set(tab.cap = function(before, options, envir) {
+#    if (before)
+#        pander::set.caption(options$tab.cap)
+#})
+#default_output_hook = knit_hooks$get("output")
+#knit_hooks$set(output = function(x, options) {
+#    if (is.null(options$tab.cap) == F)  
+#        x
+#    else
+#        default_output_hook(x, options)
+#})
 
 ## Extensions to kfigr
 

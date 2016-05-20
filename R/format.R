@@ -55,3 +55,13 @@ fmt_range <- function(v, digits=2) {
 fmt_true <- function(v, digits=2) {
     paste0(sum(v), " (", round((sum(v) / length(v)) * 100, 2), "%)")
 }
+
+#' Format the mean +/- the standard deviation for a vector.
+#' 
+#' @param v numeric vector
+#' @param digits number of digits to print
+fmt.mean_sd <- function(v, digits=1) {
+    m <- mean(v)
+    s <- sd(v)
+    paste(round(m, digits), "±", round(s, digits))
+}
