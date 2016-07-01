@@ -25,11 +25,14 @@ rel_path <- function(...) {
 #' file. The default is to return all objects in the file.
 load_data <- function(..., return.list=FALSE, obj.names=NULL) {
     e <- new.env()
+    .names <- load(rel_path(...), envir=e)
     if (is.null(obj.names)) {
-        obj.names <- load(rel_path(...), envir=e)
+        obj.names <- .names
     }
     else {
-        load(f, envir=e)
+        if (!all(obj.names %in% .names)) {
+            stop(paste("One or more invalid names:", paste(obj.names, collapse=",")))
+        }
     }
     if (length(obj.names) > 1 || return.list) {
         return(mget(obj.names, envir=e))
@@ -45,8 +48,8 @@ load_data <- function(..., return.list=FALSE, obj.names=NULL) {
 #' @param sep table separator (default '\t')
 #' @param header whether the table has a header row (default TRUE)
 #' @param ... additional arguments to read.table
-load_table <- function(filename, sep="\t", header=TRUE, ...) {
-    read.table(rel_path(filename), sep=sep, header=header, stringsAsFactors=FALSE, ...)
+load_table <- function(filename, delim="\t", col_names=TRUE, ...) {
+    readr::read_delim(rel_path(filename), delim=delim, col_names=col_names, ...)
 }
 
 #' Load an R file from a relative path as a module.
