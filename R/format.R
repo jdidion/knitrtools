@@ -40,11 +40,11 @@ fmt.pct <- function(v, digits=0) {
 #'
 #' @param v numeric vector
 #' @param digits number of digits to print (if values are not integers)
-fmt.range <- function(v, digits=2) {
+fmt.range <- function(v, digits=2, sep="-") {
     if (all(is.integer(v))) {
         digits <- 0
     }
-    paste(round(range(v), digits), collapse="-")
+    paste(round(range(v), digits), collapse=sep)
 }
 
 #' Format a logical vector as a sum (total number of true values) and percentage
