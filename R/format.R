@@ -4,7 +4,7 @@
 #' @param fn function to apply to `v` (or NULL to use `v` as-is)
 #' @param ... additional arguments to `fn`
 #' @param oxford use an oxford comma
-fmt.list <- function(v, fn=NULL, ..., oxford=TRUE) {
+fmt_list <- function(v, fn=NULL, ..., oxford=TRUE) {
     if (!is.null(fn)) {
         v <- sapply(v, fn, ...)
     }
@@ -27,7 +27,7 @@ fmt.list <- function(v, fn=NULL, ..., oxford=TRUE) {
 #'
 #' @param v vector of numeric values
 #' @param digits number of digits to print
-fmt.pct <- function(v, digits=0) {
+fmt_pct <- function(v, digits=0) {
     if (length(v) == 1) {
         paste0(round(v*100, digits), "%")
     }
@@ -52,6 +52,16 @@ fmt.range <- function(v, digits=2, sep="-") {
 #'
 #' @param v logical vector
 #' @param digits number of digits to print for percentage
-fmt.true <- function(v, digits=2) {
+fmt_true <- function(v, digits=2) {
     paste0(sum(v), " (", round((sum(v) / length(v)) * 100, 2), "%)")
+}
+
+#' Format the mean +/- the standard deviation for a vector.
+#'
+#' @param v numeric vector
+#' @param digits number of digits to print
+fmt.mean_sd <- function(v, digits=1) {
+    m <- mean(v)
+    s <- sd(v)
+    paste(round(m, digits), "±", round(s, digits))
 }
