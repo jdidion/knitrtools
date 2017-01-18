@@ -40,7 +40,7 @@ fmt_pct <- function(v, digits=0) {
 #'
 #' @param v numeric vector
 #' @param digits number of digits to print (if values are not integers)
-fmt.range <- function(v, digits=2, sep="-") {
+fmt_range <- function(v, digits=2, sep="-") {
     if (all(is.integer(v))) {
         digits <- 0
     }
@@ -60,8 +60,19 @@ fmt_true <- function(v, digits=2) {
 #'
 #' @param v numeric vector
 #' @param digits number of digits to print
-fmt.mean_sd <- function(v, digits=1) {
+fmt_mean_sd <- function(v, digits=1) {
     m <- mean(v)
     s <- sd(v)
     paste(round(m, digits), "±", round(s, digits))
+}
+
+#' Format numeric values as currency. Note: this is very crude and probably won't
+#' generate correct currency strings for all locales.
+#'
+#' @param v numeric vector
+#' @param currency symbol ($ by default)
+#' @param commas whether to separate every 3 digits with commas
+#' @param cents whether to show cents amount after decimal
+fmt_currency <- function(v, currency='$', commas=TRUE, cents=TRUE) {
+    paste0(currency, formatC(v, format="f", digits=ifelse(cents, 2, 0), big.mark=ifelse(commas, ",", "")))
 }
